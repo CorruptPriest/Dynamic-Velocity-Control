@@ -57,7 +57,15 @@ def missile_control(range_target, time_of_flight, max_velocity, max_acceleration
     print(f"Cruise Velocity: {cruise_velocity:.2f} m/s")
     print(f"Total Flight Time: {total_time:.2f} s")
 
-missile_control(range_target=10000, time_of_flight=200, max_velocity=300, max_acceleration=15)
+try:
+    range_target = float(input("Enter target range in meters: "))
+    time_of_flight = float(input("Enter total flight time in seconds: "))
+    max_velocity = float(input("Enter maximum velocity in m/s: "))
+    max_acceleration = float(input("Enter maximum acceleration in m/s²: "))
+    
+    missile_control(range_target, time_of_flight, max_velocity, max_acceleration)
+except ValueError:
+    print("Invalid input! Please enter numeric values.")
 
 
 # About the method:
