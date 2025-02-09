@@ -1,0 +1,26 @@
+Methods- 
+    1. Name :def calculate_flight_time(distance, max_velocity, max_acceleration):
+       About:Calculates the flight time based on acceleration and cruising dynamics.
+       Parameters:
+        distance (float): Distance to be traveled in meters.
+        max_velocity (float): Maximum allowable velocity in m/s.
+        max_acceleration (float): Maximum allowable acceleration in m/s².
+       Returns:
+        float: Total flight time in seconds.
+
+    2. Name :def plot_missile_path(point1, point2):
+       About:Plots the missile's straight-line path between two points on a grid.
+       Parameters:
+        point1 (tuple): Starting point (x1, y1) in km.
+        point2 (tuple): Ending point (x2, y2) in km.
+
+    3. Name :def select_points_on_grid(grid_scale):
+       About:Allows user to select two points on a grid and calculates the Euclidean distance between them.
+       Parameters:
+        grid_scale (int): The scale of the grid (e.g., maximum x and y values).
+
+
+For Controls-v3 :
+ -Adding 3d plotting
+ -Adding option to input velocity and acceleration in km/h rather than m/s.
+    
