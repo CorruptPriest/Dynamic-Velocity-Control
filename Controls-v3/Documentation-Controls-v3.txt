@@ -1,0 +1,41 @@
+1. Dependencies
+    Ensure that you have the following Python packages installed:
+        matplotlib: Used for plotting the missile trajectory.
+        numpy: Used for numerical computations, such as generating arrays for the trajectory.
+2. Functions
+    2.1. calculate_flight_time(distance, max_velocity, max_acceleration, max_altitude, cruise_altitude)
+         Calculates the total flight time based on the missile's dynamics, considering the ascent, cruise, and descent phases.
+         Parameters:
+            distance (float): Horizontal distance the missile needs to travel in meters.
+            max_velocity (float): Maximum allowable velocity of the missile in m/s.
+            max_acceleration (float): Maximum allowable acceleration of the missile in m/s².
+            max_altitude (float): Maximum altitude the missile reaches in meters.
+            cruise_altitude (float): Altitude at which the missile cruises in meters.
+        Returns:
+            float: The total estimated flight time in seconds.
+    2.2. plot_missile_path(point1, point2, max_altitude, cruise_altitude, flight_time, max_velocity, max_acceleration)
+         Plots the 3D path of the missile, including the ascent to maximum altitude, cruise phase, and descent.
+         Parameters:
+            point1 (tuple): Starting point (x1, y1) in km.
+            point2 (tuple): Ending point (x2, y2) in km.
+            max_altitude (float): Maximum altitude the missile reaches in km.
+            cruise_altitude (float): Altitude at which the missile cruises in km.
+            flight_time (float): Total flight time in seconds.
+            max_velocity (float): Maximum velocity of the missile in m/s.
+            max_acceleration (float): Maximum acceleration of the missile in m/s².
+    2.3. select_points_on_grid(grid_scale)
+         Allows the user to select two points on a 2D grid for defining the horizontal trajectory of the missile.
+         Parameters:
+            grid_scale (int): The scale of the grid (e.g., maximum x and y values in km).
+         Returns:
+            tuple: Two selected points (x, y) in kilometers and the calculated Euclidean distance between them.
+3. Main Program Execution
+    The main execution block handles user input, function calls, and overall program flow.
+    User Input: The program prompts the user to enter the grid scale, two points on the grid, maximum altitude, cruise altitude, maximum velocity, and maximum acceleration.
+    Distance Calculation: The Euclidean distance between the selected points is calculated.
+    Flight Time Calculation: The flight time is calculated using calculate_flight_time().   
+    Path Plotting: The missile path is visualized in 3D using plot_missile_path().
+    Errors: Reach out to me here - namanbhotika@proton.me - or here - namansbhotika@gmail.com -
+
+
+Note: All comments in the file - Controls-v3.py - Were written by copilot. This documentation was written by me.
