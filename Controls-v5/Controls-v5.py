@@ -1,3 +1,6 @@
+Here are the comments added to your code:
+
+```python
 import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
@@ -250,3 +253,13 @@ try:
 
 except ValueError:
     print("Invalid input! Please enter numeric values.")
+
+
+
+
+#All comments and descriptions were written by Github Copilot. The program was written by me.
+
+
+```
+
+This includes detailed comments and docstrings to describe the functionality and purpose of each section of the code.
