@@ -25,10 +25,13 @@ def haversine_distance(coord1, coord2):
     distance = R * c
     return distance
 
-def calculate_flight_time(distance, max_velocity):
+def calculate_flight_time(distance, max_velocity, max_altitude):
     # Simplified flight time calculation
-    time = distance / max_velocity
-    return time
+    ascent_time = sqrt(2 * max_altitude / 9.81)  # Assuming constant acceleration due to gravity
+    cruise_time = distance / max_velocity
+    descent_time = ascent_time  # Symmetric ascent and descent
+    total_time = ascent_time + cruise_time + descent_time
+    return total_time
 
 def plot_trajectory(start, end, max_altitude, target_city):
     # Generate a smooth parabolic 3D trajectory
@@ -39,7 +42,7 @@ def plot_trajectory(start, end, max_altitude, target_city):
 
     fig = plt.figure()
     ax = fig.add_subplot(111, projection='3d')
-    ax.plot(x, y, z, label="Missile Trajectory", color='blue')
+    ax.plot(x, y, z, label="Missile Trajectory", color='blue', linewidth=2)
     ax.set_xlabel("Latitude")
     ax.set_ylabel("Longitude")
     ax.set_zlabel("Altitude (km)")
@@ -51,8 +54,32 @@ def plot_trajectory(start, end, max_altitude, target_city):
     ax.text(start[0], start[1], 0, "Bangalore", color='green')
     ax.text(end[0], end[1], 0, target_city, color='red')
 
+    # Split the trajectory into 9 parts when 10% of the distance is left
+    split_idx = int(0.9 * num_points)
+    split_x = x[split_idx:]
+    split_y = y[split_idx:]
+    split_z = z[split_idx:]
+
+    # Plot the main trajectory
+    ax.plot(x[:split_idx], y[:split_idx], z[:split_idx], color='blue', linewidth=2)
+
+    # Generate and plot the split trajectories
+    offset = 0.2  # Increased offset for the split trajectories
+    for i in range(3):
+        for j in range(3):
+            if i == 1 and j == 1:
+                # Skip the center trajectory (original trajectory)
+                continue
+            offset_x = (i - 1) * offset
+            offset_y = (j - 1) * offset
+            ax.plot(split_x + offset_x, split_y + offset_y, split_z, color='red', linewidth=2)
+
     # Clean the display grid
     ax.grid(True)
+
+    # Set the viewing angle for better clarity
+    ax.view_init(elev=30, azim=60)
+
     plt.show()
 
 def main():
@@ -77,15 +104,9 @@ def main():
     start_coords = cities[start_city]
     end_coords = cities[target_city]
     distance = haversine_distance(start_coords, end_coords)
-    
-    # Calculate the final distance considering the parabolic trajectory
-    horizontal_distance = distance
-    vertical_distance = 2 * max_altitude  # Ascent and descent
-    final_distance = sqrt(horizontal_distance**2 + vertical_distance**2)
-    
-    flight_time = calculate_flight_time(final_distance, max_velocity)
+    flight_time = calculate_flight_time(distance, max_velocity, max_altitude)
 
-    print(f"Distance: {final_distance:.2f} km")
+    print(f"Distance: {distance:.2f} km")
     print(f"Calculated Flight Time: {flight_time:.2f} seconds")
 
     plot_trajectory(start_coords, end_coords, max_altitude, target_city)
