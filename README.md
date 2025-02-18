@@ -1,4 +1,4 @@
-# Dynamic-Velocity-Control
+# Missile Trajectory Calculator
 
 Good Morning, Good Afternoon and Good Evening to all readers,
 
