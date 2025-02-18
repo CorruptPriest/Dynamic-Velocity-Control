@@ -1,0 +1,50 @@
+Missile Trajectory Calculator
+Overview
+The Missile Trajectory Calculator is a Python script that calculates and visualizes the flight trajectory of a missile between two cities using the Haversine formula for distance calculation and Folium for map visualization.
+
+Dependencies
+Make sure to install the following Python packages:
+
+numpy
+matplotlib
+folium
+You can install these packages using pip:
+
+Code
+pip install numpy matplotlib folium
+Script Functions
+haversine_distance(coord1, coord2)
+Calculates the great-circle distance between two points on the Earth based on their latitude and longitude using the Haversine formula.
+
+Parameters:
+coord1: Tuple containing the latitude and longitude of the first point.
+coord2: Tuple containing the latitude and longitude of the second point.
+Returns:
+Distance in kilometers.
+calculate_flight_time(distance, max_velocity, max_altitude)
+Calculates the simplified flight time of the missile based on the distance, maximum velocity, and maximum altitude.
+
+Parameters:
+distance: Distance between the start and end points in kilometers.
+max_velocity: Maximum velocity of the missile in meters per second.
+max_altitude: Maximum altitude of the missile in kilometers.
+Returns:
+Total flight time in seconds.
+plot_trajectory_on_map(start_coords, end_coords, max_altitude, target_city)
+Generates a Folium map displaying the flight trajectory between the start and end coordinates.
+
+Parameters:
+start_coords: Tuple containing the latitude and longitude of the starting point.
+end_coords: Tuple containing the latitude and longitude of the ending point.
+max_altitude: Maximum altitude of the missile in kilometers.
+target_city: Name of the target city.
+plot_trajectory(start, end, max_altitude, target_city)
+Generates a 3D plot of the missile's trajectory.
+
+Parameters:
+start: Tuple containing the latitude and longitude of the starting point.
+end: Tuple containing the latitude and longitude of the ending point.
+max_altitude: Maximum altitude of the missile in kilometers.
+target_city: Name of the target city.
+main()
+Main function to run the script, allowing the user to select a target city, input missile parameters, and visualize the trajectory.
